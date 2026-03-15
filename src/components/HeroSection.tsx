@@ -3,8 +3,19 @@ import { useRef } from "react";
 import heroMockup from "@/assets/mockup-hero.png";
 
 const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const mockupY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const mockupScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <section className="relative min-h-screen flex items-center section-padding pt-32 md:pt-40 overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center section-padding pt-32 md:pt-40 overflow-hidden">
       <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Text */}
         <motion.div
