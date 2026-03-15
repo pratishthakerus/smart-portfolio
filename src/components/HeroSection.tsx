@@ -1,15 +1,28 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import heroMockup from "@/assets/mockup-hero.png";
 
 const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const mockupY = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const mockupScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+  const textY = useTransform(scrollYProgress, [0, 1], [0, 50]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <section className="relative min-h-screen flex items-center section-padding pt-32 md:pt-40 overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center section-padding pt-32 md:pt-40 overflow-hidden">
       <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Text */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
+          style={{ y: textY, opacity: textOpacity }}
         >
           <p className="text-sm font-semibold tracking-widest uppercase text-primary mb-4">
             Mobile App Studio
@@ -30,7 +43,7 @@ const HeroSection = () => {
               View Apps
             </motion.a>
             <motion.a
-              href="#pricing"
+              href="#download"
               whileTap={{ scale: 0.96 }}
               className="bg-secondary text-secondary-foreground font-semibold px-8 py-4 rounded-lg text-sm transition-transform duration-200 hover:scale-105 border border-border"
             >
@@ -58,6 +71,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
           animate={{ opacity: 1, scale: 1, rotateY: 0 }}
           transition={{ duration: 1, ease: [0.2, 0.8, 0.2, 1], delay: 0.2 }}
+          style={{ y: mockupY, scale: mockupScale }}
           className="relative flex justify-center lg:justify-end"
         >
           <div className="relative">
@@ -65,7 +79,7 @@ const HeroSection = () => {
             <img
               src={heroMockup}
               alt="SaaS Dashboard App Mockup"
-              className="relative w-[320px] md:w-[420px] drop-shadow-2xl animate-float"
+              className="relative w-[320px] md:w-[420px] drop-shadow-2xl"
               loading="eager"
             />
           </div>
