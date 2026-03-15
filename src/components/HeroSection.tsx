@@ -71,6 +71,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
           animate={{ opacity: 1, scale: 1, rotateY: 0 }}
           transition={{ duration: 1, ease: [0.2, 0.8, 0.2, 1], delay: 0.2 }}
+          style={{ y: mockupY, scale: mockupScale }}
           className="relative flex justify-center lg:justify-end"
         >
           <div className="relative">
@@ -78,7 +79,7 @@ const HeroSection = () => {
             <img
               src={heroMockup}
               alt="SaaS Dashboard App Mockup"
-              className="relative w-[320px] md:w-[420px] drop-shadow-2xl animate-float"
+              className="relative w-[320px] md:w-[420px] drop-shadow-2xl"
               loading="eager"
             />
           </div>
