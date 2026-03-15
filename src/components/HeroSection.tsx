@@ -22,6 +22,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.2, 0.8, 0.2, 1] }}
+          style={{ y: textY, opacity: textOpacity }}
         >
           <p className="text-sm font-semibold tracking-widest uppercase text-primary mb-4">
             Mobile App Studio
@@ -42,7 +43,7 @@ const HeroSection = () => {
               View Apps
             </motion.a>
             <motion.a
-              href="#pricing"
+              href="#download"
               whileTap={{ scale: 0.96 }}
               className="bg-secondary text-secondary-foreground font-semibold px-8 py-4 rounded-lg text-sm transition-transform duration-200 hover:scale-105 border border-border"
             >
