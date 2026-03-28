@@ -1,8 +1,28 @@
 const footerLinks = {
-  Product: ["All Apps", "Pricing", "Documentation", "Changelog"],
-  Company: ["About", "Blog", "Careers", "Contact"],
-  Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
+  Product: [
+    { label: "All Apps", href: "#apps" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Features", href: "#features" },
+    { label: "Downloads", href: "#download" },
+  ],
+  Company: [
+    { label: "About", href: "#about" },
+    { label: "Testimonials", href: "#testimonials" },
+    { label: "Careers", href: "#about" },
+    { label: "Contact", href: "#contact" },
+  ],
+  Legal: [
+    { label: "Privacy Policy", href: "#contact" },
+    { label: "Terms of Service", href: "#contact" },
+    { label: "Cookie Policy", href: "#contact" },
+  ],
 };
+
+const socialLinks = [
+  { label: "Twitter", href: "#", title: "Follow us on Twitter" },
+  { label: "GitHub", href: "#", title: "View our open source projects" },
+  { label: "LinkedIn", href: "#", title: "Connect with us on LinkedIn" },
+];
 
 const Footer = () => {
   return (
@@ -23,9 +43,9 @@ const Footer = () => {
               <h4 className="text-sm font-semibold text-foreground mb-4">{title}</h4>
               <ul className="space-y-2.5">
                 {links.map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                      {link}
+                  <li key={link.label}>
+                    <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
+                      {link.label}
                     </a>
                   </li>
                 ))}
@@ -39,9 +59,9 @@ const Footer = () => {
             © {new Date().getFullYear()} Studio. All rights reserved.
           </p>
           <div className="flex gap-6">
-            {["Twitter", "GitHub", "LinkedIn"].map((social) => (
-              <a key={social} href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
-                {social}
+            {socialLinks.map((social) => (
+              <a key={social.label} href={social.href} title={social.title} className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+                {social.label}
               </a>
             ))}
           </div>

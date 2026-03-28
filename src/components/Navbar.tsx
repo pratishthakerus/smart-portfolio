@@ -3,12 +3,13 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Apps", href: "#apps" },
-  { label: "Features", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Apps", href: "#apps", title: "Browse our portfolio of 50+ mobile applications" },
+  { label: "Features", href: "#features", title: "Explore platform features and capabilities" },
+  { label: "Download", href: "#download", title: "Download apps for iOS, Android, or APK" },
+  { label: "Pricing", href: "#pricing", title: "View subscription plans and pricing" },
+  { label: "Testimonials", href: "#testimonials", title: "Read what our users are saying" },
+  { label: "About", href: "#about", title: "Learn about our team and mission" },
+  { label: "Contact", href: "#contact", title: "Get in touch with us" },
 ];
 
 const Navbar = () => {
@@ -41,6 +42,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
+              title={link.title}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
             >
               {link.label}
@@ -48,6 +50,7 @@ const Navbar = () => {
           ))}
           <a
             href="#contact"
+            title="Get started with Studio today"
             className="gradient-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 rounded-lg transition-transform duration-200 hover:scale-105 active:scale-95"
           >
             Get Started
@@ -75,6 +78,7 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
+              title={link.title}
               onClick={() => setMobileOpen(false)}
               className="block py-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
