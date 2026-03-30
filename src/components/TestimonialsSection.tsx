@@ -5,19 +5,19 @@ const testimonials = [
   {
     name: "Sarah Chen",
     role: "CTO, HealthTech Inc.",
-    review: "VitalTrack transformed how we monitor patient health. The real-time sync is flawless and the UI is incredibly intuitive.",
+    review: "AstroMate transformed how we monitor patient health. The real-time sync is flawless and the UI is incredibly intuitive.",
     rating: 5,
   },
   {
     name: "Marcus Rivera",
     role: "Product Manager, NovaPay",
-    review: "FinFlow's architecture is exactly what we needed. Clean APIs, rock-solid security, and a design that users actually love.",
+    review: "VastuFlow's architecture is exactly what we needed. Clean APIs, rock-solid security, and a design that users actually love.",
     rating: 5,
   },
   {
     name: "Emily Nakamura",
     role: "VP Engineering, ScaleUp",
-    review: "TaskForge replaced three different tools for our team. The kanban integration with calendar sync is a game-changer.",
+    review: "LKTips replaced the traditional tools for our team. The ancient integration with modern sync is a game-changer.",
     rating: 5,
   },
 ];

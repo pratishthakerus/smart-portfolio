@@ -32,7 +32,7 @@ const HeroSection = () => {
             <span className="gradient-text">hardware.</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg mb-10">
-            A collection of purpose-built mobile experiences. Innovative SaaS applications crafted for real-world solutions. High floor, no ceiling.
+            A collection of purpose-built mobile experiences. Innovative SaaS applications crafted for real-world solutions. A mobile app portfolio with astrology resources.
           </p>
           <div className="flex flex-wrap gap-4">
             <motion.a

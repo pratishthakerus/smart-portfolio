@@ -22,8 +22,8 @@ const ContactSection = () => {
 
             <div className="space-y-4">
               {[
-                { icon: Mail, label: "hello@studio.dev", description: "Email us anytime" },
-                { icon: MessageCircle, label: "WhatsApp Support", description: "Quick response guaranteed" },
+                { icon: Mail, label: "[EMAIL_ADDRESS]", description: "Write us anytime" },
+                { icon: MessageCircle, label: "Technical Support", description: "Quick response guaranteed" },
                 { icon: FileText, label: "Documentation", description: "Read our developer docs" },
               ].map(({ icon: Icon, label, description }) => (
                 <a

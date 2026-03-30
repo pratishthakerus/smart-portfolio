@@ -31,10 +31,10 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="font-display font-bold text-xl tracking-tight text-foreground">
-              Studio<span className="gradient-text">.</span>
+              Destiny Studio<span className="gradient-text">.</span>
             </a>
             <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
-              Purpose-built mobile experiences. High floor, no ceiling.
+              Purpose-built mobile experiences. Inspiration of Vedic wisdom with modern technology.
             </p>
           </div>
 
@@ -56,7 +56,7 @@ const Footer = () => {
 
         <div className="border-t border-border pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Studio. All rights reserved.
+            © {new Date().getFullYear()} Destiny Studio. All rights reserved.
           </p>
           <div className="flex gap-6">
             {socialLinks.map((social) => (
