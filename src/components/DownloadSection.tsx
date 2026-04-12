@@ -3,40 +3,40 @@ import { Download, Smartphone, Apple, Play } from "lucide-react";
 
 const apps = [
   {
-    name: "VitalTrack",
+    name: "Cosmic Compass",
     version: "v2.4.1",
     size: "14.2 MB",
     updated: "March 10, 2026",
-    releaseNotes: [
-      "Improved heart rate accuracy with new sensor algorithms",
-      "Added sleep stage breakdown (REM, deep, light)",
-      "Fixed crash on iOS 18 when syncing health data",
-      "New widget for home screen activity rings",
-    ],
+        releaseNotes: [
+          "Improved transit-based daily wellbeing suggestions",
+          "New birth-chart health recommendations module",
+          "Personalized reminder scheduling for rituals & routines",
+          "Performance improvements and bug fixes",
+        ],
   },
   {
-    name: "FinFlow",
+    name: "Numerology",
     version: "v3.1.0",
     size: "18.6 MB",
     updated: "March 5, 2026",
-    releaseNotes: [
-      "Instant bank transfers now available in 12 new countries",
-      "Redesigned investment portfolio dashboard",
-      "Added biometric authentication for transactions",
-      "Performance improvements and bug fixes",
-    ],
+        releaseNotes: [
+          "Added life-path & destiny number calculator",
+          "Quick best-date finder for events and launches",
+          "Compatibility report generator with sharing export",
+          "UI refinements and stability fixes",
+        ],
   },
   {
-    name: "TaskForge",
+    name: "Lal Kitab",
     version: "v1.8.3",
     size: "12.1 MB",
     updated: "February 28, 2026",
-    releaseNotes: [
-      "New automation rules for recurring tasks",
-      "Calendar sync now supports Google & Outlook",
-      "Improved kanban board drag-and-drop performance",
-      "Dark mode refinements across all screens",
-    ],
+        releaseNotes: [
+          "Added house-wise Lal Kitab remedies and explanations",
+          "Remedy scheduler and daily checklist tracker",
+          "Expanded database of traditional remedies with sources",
+          "Minor bug fixes and improved data export",
+        ],
   },
 ];
 

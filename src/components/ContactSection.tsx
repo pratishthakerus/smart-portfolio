@@ -22,7 +22,7 @@ const ContactSection = () => {
 
             <div className="space-y-4">
               {[
-                { icon: Mail, label: "[EMAIL_ADDRESS]", description: "Write us anytime" },
+                { icon: Mail, label: "Contact Us", description: "Write us anytime" },
                 { icon: MessageCircle, label: "Technical Support", description: "Quick response guaranteed" },
                 { icon: FileText, label: "Documentation", description: "Read our developer docs" },
               ].map(({ icon: Icon, label, description }) => (
@@ -49,12 +49,22 @@ const ContactSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <form className="studio-card !rounded-3xl space-y-5" onSubmit={(e) => e.preventDefault()}>
+            <form
+              action="https://formsubmit.co/destiny.centre.anand@gmail.com"
+              method="POST"
+              className="studio-card !rounded-3xl space-y-5"
+            >
+              {/* FormSubmit will deliver submissions to destiny.centre.anand@gmail.com. First submission requires confirmation from the recipient. */}
+              <input type="hidden" name="_subject" value="New inquiry from Destiny Group website" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_next" value={typeof window !== 'undefined' ? window.location.href : '/'} />
               <div>
                 <label className="text-sm font-medium text-foreground block mb-2">Name</label>
                 <input
                   type="text"
+                  name="name"
                   placeholder="Your name"
+                  required
                   className="w-full bg-muted border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
                 />
               </div>
@@ -62,15 +72,19 @@ const ContactSection = () => {
                 <label className="text-sm font-medium text-foreground block mb-2">Email</label>
                 <input
                   type="email"
+                  name="email"
                   placeholder="you@company.com"
+                  required
                   className="w-full bg-muted border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all"
                 />
               </div>
               <div>
                 <label className="text-sm font-medium text-foreground block mb-2">Message</label>
                 <textarea
+                  name="message"
                   rows={4}
                   placeholder="Tell us about your project..."
+                  required
                   className="w-full bg-muted border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all resize-none"
                 />
               </div>
