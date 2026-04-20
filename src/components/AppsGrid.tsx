@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { portfolioApps, categories } from "@/data/portfolioApps";
+import { portfolioApps, categories, PortfolioApp } from "@/data/portfolioApps";
 import {
   Pagination,
   PaginationContent,
@@ -10,6 +10,7 @@ import {
   PaginationPrevious,
   PaginationEllipsis,
 } from "@/components/ui/pagination";
+import AppDetailModal from "./AppDetailModal";
 
 const ITEMS_PER_PAGE = 9;
 
@@ -26,6 +27,8 @@ const item = {
 const AppsGrid = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedApp, setSelectedApp] = useState<PortfolioApp | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const filteredApps =
     activeCategory === "All"
@@ -41,6 +44,11 @@ const AppsGrid = () => {
   const handleCategoryChange = (cat: string) => {
     setActiveCategory(cat);
     setCurrentPage(1);
+  };
+
+  const handleOpenDetail = (app: PortfolioApp) => {
+    setSelectedApp(app);
+    setIsModalOpen(true);
   };
 
   const getCategorySlug = (cat: string) =>
@@ -63,7 +71,8 @@ const AppsGrid = () => {
   };
 
   return (
-    <section id="apps" className="section-padding">
+    <>
+      <section id="apps" className="section-padding">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -121,9 +130,16 @@ const AppsGrid = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
           >
             {paginatedApps.map((app) => (
-              <motion.div key={app.id} variants={item} className="studio-card group cursor-pointer">
+              <motion.div
+                key={app.id}
+                layoutId={`app-card-${app.id}`}
+                variants={item}
+                onClick={() => handleOpenDetail(app)}
+                className="studio-card group cursor-pointer"
+              >
                 <div className="bg-muted rounded-2xl p-8 flex items-center justify-center mb-6 overflow-hidden">
-                  <img
+                  <motion.img
+                    layoutId={`app-image-${app.id}`}
                     src={app.image}
                     alt={`${app.name} app mockup`}
                     className="w-48 h-auto drop-shadow-xl transition-transform duration-500 group-hover:scale-105"
@@ -138,15 +154,18 @@ const AppsGrid = () => {
                 </div>
 
                 <h3 className="text-xl font-bold text-foreground mb-2">{app.name}</h3>
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{app.description}</p>
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-2">{app.description}</p>
 
-                <ul className="space-y-1.5 mb-5">
-                  {app.features.map((f) => (
-                    <li key={f} className="text-sm text-muted-foreground flex items-center gap-2">
-                      <span className="w-1 h-1 rounded-full bg-primary inline-block" />
+                <ul className="space-y-1.5 mb-5 h-[120px] overflow-hidden">
+                  {app.features.slice(0, 3).map((f) => (
+                    <li key={f} className="text-sm text-muted-foreground flex items-center gap-2 truncate">
+                      <span className="w-1 h-1 rounded-full bg-primary inline-block shrink-0" />
                       {f}
                     </li>
                   ))}
+                  {app.features.length > 3 && (
+                    <li className="text-xs text-primary font-medium">+ {app.features.length - 3} more features</li>
+                  )}
                 </ul>
 
                 <div className="flex items-center gap-3 text-xs text-muted-foreground font-mono tracking-tighter border-t border-border pt-4">
@@ -158,10 +177,19 @@ const AppsGrid = () => {
                 </div>
 
                 <div className="flex gap-3 mt-5">
-                  <button className="flex-1 gradient-primary text-primary-foreground text-sm font-semibold py-2.5 rounded-lg transition-transform duration-200 hover:scale-105 active:scale-95">
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleOpenDetail(app);
+                    }}
+                    className="flex-1 gradient-primary text-primary-foreground text-sm font-semibold py-2.5 rounded-lg transition-transform duration-200 hover:scale-105 active:scale-95"
+                  >
                     View Details
                   </button>
-                  <button className="flex-1 bg-secondary text-secondary-foreground text-sm font-semibold py-2.5 rounded-lg border border-border transition-transform duration-200 hover:scale-105 active:scale-95">
+                  <button 
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex-1 bg-secondary text-secondary-foreground text-sm font-semibold py-2.5 rounded-lg border border-border transition-transform duration-200 hover:scale-105 active:scale-95"
+                  >
                     Download
                   </button>
                 </div>
@@ -224,6 +252,12 @@ const AppsGrid = () => {
         )}
       </div>
     </section>
+    <AppDetailModal
+      app={selectedApp}
+      isOpen={isModalOpen}
+      onClose={() => setIsModalOpen(false)}
+    />
+    </>
   );
 };
 
